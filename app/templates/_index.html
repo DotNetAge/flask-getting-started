@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import '_marcos.html' as ui %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    {% set links=[
+    ('Home', url_for('.index')),
+    ('About',url_for('.about')),
+    ('Services', url_for('.services')),
+    ('Projects',url_for('.projects')),
+] %}
+
+    <nav>
+        {% for label,href in links %}
+            {% if not loop.first %} | {% endif %}
+            <a href="{% if href is current_link %} #
+            {% else %}
+            {{ href }}
+            {% endif %}">
+                {{ label }}</a>
+        {% endfor %}
+    </nav>
+    <h1>{{ self.title() }}</h1>
+
+    {{ ui.input('username') }}
+    {{ ui.input('password',type='password') }}
+
+{% endblock content %}
+
+{% block footer %}
+    <hr>
+    {{ super() }}
+{% endblock %}

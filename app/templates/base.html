@@ -1,0 +1,34 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    {% include ['includes/_head.html', 'includes/_metas.html'] %}
+{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cerulean/bootstrap.min.css">
+{% endblock %}
+{% block navbar %}
+    {# { nav.top.render() }} #}
+    {% include 'includes/_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    {% block header %}
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <h1>{{ title }}</h1>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+    {% block page_body %}
+    {% endblock %}
+{% endblock %}
+{% block footer %}
+    <footer>
+        Copyright 2015 by <a href="ray.dotnetage.com">Ray</a>
+    </footer>
+{% endblock %}

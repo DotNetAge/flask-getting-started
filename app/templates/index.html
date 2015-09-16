@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+{% block page_body %}
+    <div class="container">
+        <a href="{{ url_for('main.edit') }}" class="btn btn-primary">发表新文章</a>
+    </div>
+    <div class="container">
+        {% for post in posts %}
+            <h2><a href="{{ url_for('main.post', id = post.id) }}">{{ post.title }}</a></h2>
+            <div>
+                {{ post.body_html|safe }}
+            </div>
+        {% endfor %}
+
+        {% if pagination %}
+            {{ render_pagination(pagination) }}
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+
